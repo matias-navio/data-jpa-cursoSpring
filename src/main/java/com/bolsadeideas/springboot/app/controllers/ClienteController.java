@@ -1,7 +1,7 @@
 package com.bolsadeideas.springboot.app.controllers;
 
-import com.bolsadeideas.springboot.app.models.dao.IClienteDao;
 import com.bolsadeideas.springboot.app.models.entity.Cliente;
+import com.bolsadeideas.springboot.app.models.services.IClienteService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,22 +11,26 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import java.util.Map;
 
 @Controller
+// crea una sesión con los datos del objeto cliente y los pasas a la vista
+@SessionAttributes("cliente")
 public class ClienteController {
 
+
+//    @Qualifier("clienteDaoJPA") // sirve en caso de que se inyecte IClienteDao en dos o mas componentes
     @Autowired
-    @Qualifier("clienteDaoJPA") // sirve en caso de que se inyecte IClienteDao en dos o mas componentes
-    private IClienteDao clienteDao;
+    private IClienteService clienteService;
 
     // primero se especifica la ruta, y despues el motodo que por defecto es GET
     @RequestMapping(value = "/listar", method = RequestMethod.GET)
     public String listar(Model model){
 
         model.addAttribute("titulo", "Listado de clientes");
-        model.addAttribute("clientes", clienteDao.findAll());
+        model.addAttribute("clientes", clienteService.findAll());
 
         return "listar";
     }
@@ -48,7 +52,7 @@ public class ClienteController {
         Cliente cliente = null;
         if(id > 0){
             // si el id es mayor a 0 lo busca la clase Dao
-            cliente = clienteDao.findOne(id);
+            cliente = clienteService.findOne(id);
         }else{
             return "redirect:listar";
         }
@@ -61,7 +65,7 @@ public class ClienteController {
     }
 
     @RequestMapping(value = "/form", method = RequestMethod.POST)
-    public String guardar(@Valid Cliente cliente, BindingResult result, Model model){
+    public String guardar(@Valid Cliente cliente, BindingResult result, Model model, SessionStatus sesion){
 
         // verifica si hay errores, si los hay muestra un msj para que el usuario los corrija
         // sino guarda al cliente y retorna listar
@@ -71,8 +75,21 @@ public class ClienteController {
         }
 
         // recibe el objeto cliente y lo guarda
-        clienteDao.save(cliente);
+        clienteService.save(cliente);
 
+        // elimina el objeto cliente de la sesion
+        sesion.setComplete();
         return "redirect:listar";
+    }
+
+    @RequestMapping(value = "/eliminar/{id}")
+    public String eliminar(@PathVariable(value = "id") Long id){
+
+        if(id > 0){
+            clienteService.delete(id);
+        }
+
+        return "redirect:/listar";
+
     }
 }
