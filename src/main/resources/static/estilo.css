@@ -6,12 +6,12 @@ body{
     font-family: 'Work Sans', sans-serif;
 }
 
-.contenido{
-    max-width: 70%;
+.contenido {
+    max-width: 80%;
     display: flex;
     flex-direction: column;
     justify-content: start;
-    margin-left: 50px;
+    margin: auto;
     gap: 20px;
 }
 
@@ -20,6 +20,7 @@ body{
     margin-top: 40px;
     margin-bottom: 20px;
     font-size: 35px;
+    text-align: center;
 }
 
 .btn-crear{
@@ -32,6 +33,7 @@ body{
     border-radius: 5px;
     text-align: center;
     transition: .3s linear;
+    margin: auto;
 }
 
 .btn-crear:hover{
@@ -95,7 +97,7 @@ td{
 .formulario{
     max-width: 500px;
     height: 100vh;
-    margin: 0 auto;
+    margin: 30px auto;
     border-top: none;
     border-bottom: none;
     padding: 40px;
@@ -147,6 +149,31 @@ form{
 .alerta{
     font-size: 11px;
     color: red;
+}
+
+/* FOOTER */
+
+.footer{
+    max-width: 80%;
+    margin: 100px auto;
+    overflow: hidden;
+}
+
+.logo-footer{
+    width: 20%; 
+    box-sizing: border-box;
+}
+
+.footer a{
+    text-decoration: none;
+}
+
+.texto-footer{
+    margin-top: 50px;
+    float: right;
+    width: 70%; 
+    box-sizing: border-box; 
+
 }
 
 
