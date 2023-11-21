@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+
+    <header th:replace="layout/layout :: header"></header>
+
+    <p class="titulo-detalle" th:text="${titulo}"></p>
+    
+    <section class="contenedor-detalles">
+
+<!-- verifica que el nombre de la foto es mayor a 0, entonce existe-->
+        <img class="foto-cliente" th:if="${#strings.length(cliente.foto) > 0}" th:src="@{'/uploads/' + ${cliente.foto}}" th:alt="${cliente.foto}">
+
+        <ul class="datos-cliente">
+            <li th:text="${'Nombre: '} + ${cliente.nombre}"></li>
+            <li th:text="${'Apellido: '} + ${cliente.apellido}"></li>
+            <li th:text="${'Email: '} + ${cliente.email}"></li>
+            <li th:text="${'Fecha: '} + ${cliente.createAt}"></li>
+        </ul>
+
+    </section>
+
+    
+
+    <footer th:replace="layout/layout :: footer"></footer>
+
+</body>
+</html>

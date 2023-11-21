@@ -19,8 +19,11 @@ public class PageRender<T> {
         this.page = page;
         this.paginas = new ArrayList<>();
 
+        // obtiene los elementos por pagina que le especificamos en el constructor
         numElementosPorPaginas = page.getSize();
+        // obtiene la pagina que le especificamos en el constructor
         totalPaginas = page.getTotalPages();
+        // obtiene la pagina actual de la cantidad que hay
         paginaActual = page.getNumber() + 1;
 
         int desde, hasta;

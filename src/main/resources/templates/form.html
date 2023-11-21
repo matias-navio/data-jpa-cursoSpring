@@ -12,7 +12,7 @@
         <h1 th:text="${titulo}" class="titulo"></h1>
         
         <!--    action es la ruta a donde se dirigen los datos enviados y objet el objeto al que hacemos referencia-->
-        <form th:action="@{/form}" th:object="${cliente}" method="post">
+        <form th:action="@{/form}" th:object="${cliente}" method="post" enctype="multipart/form-data">
             
             <div class="campos">
                 <label class="con-color">Nombre</label>
@@ -35,6 +35,9 @@
                 <input type="text" th:field="*{createAt}" th:errorclass="'form-control is-invalid'" />
 
                 <small class="alerta" th:if="${#fields.hasErrors('createAt')}" th:errors="*{createAt}"></small>
+
+                <label class="con-color">Foto</label>
+                <input type="file" name="file">
 
                 <input type="submit" value="Crear cliente" class="boton" />
             </div>
