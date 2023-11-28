@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'Spring Boot: MVC + Thymeleaf + Data JPA - ' + ${titulo}"></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" th:href="@{../../css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{../../css/estilo.css}">
+</head>
+
+<body>
+
+    <header th:replace="~{layout/layout :: header}"></header>
+
+    <div class="formulario-factura">
+
+        <a th:href="@{../../listar}" class="btn-volver" th:text="${'&laquo; volver'}"></a>
+
+        <h1 th:text="${titulo}" class="titulo-factura"></h1>
+
+        <form th:action="@{/factura/form}" th:object="${factura}" method="post">
+
+            <div class="campos-factura">
+
+                <label class="con-color">Cliente</label>
+                <input th:value="${factura.cliente.nombre} + ' ' + ${factura.cliente.apellido}" disabled="'disabled'">
+
+                <label class="con-color">Descripcion</label>
+                <input type="text" th:field="*{descripcion}">
+
+                <label class="con-color">Observasion</label>
+                <textarea th:field="*{observasion}"></textarea>
+
+                <label for="buscar_producto" class="con-color">Buscar producto: </label>
+                <input type="text" name="buscar_producto" id="buscar_producto">
+
+                <input type="submit" th:value="${boton}" class="btn-crear-factura">
+            </div>
+
+        </form>
+
+    </div>
+
+    <footer th:replace="~{layout/layout :: footer}"></footer>
+    <script th:replace="~{factura/js/autocomplete-productos :: javascript}"></script>
+
+</body>
+</html>

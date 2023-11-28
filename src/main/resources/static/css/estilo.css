@@ -6,6 +6,10 @@ body{
     font-family: 'Work Sans', sans-serif;
 }
 
+body a:hover{
+    text-decoration: none;
+}
+
 .contenido {
     max-width: 80%;
     display: flex;
@@ -24,7 +28,6 @@ body{
 }
 
 .btn-crear{
-    text-decoration: none;
     font-size: 20px;
     color: rgba(41, 40, 40, 0.392);
     border: 1px solid rgba(41, 40, 40, 0.392);
@@ -66,6 +69,7 @@ td{
 
 .btn-id:hover{
     background-color: rgba(98, 195, 255, 0.623);
+    color: white;
 }
 
 .btn-editar{
@@ -80,6 +84,8 @@ td{
 
 .btn-editar:hover{
     background-color: rgba(137, 43, 226, 0.727);
+    color: white;
+
 }
 
 .btn-eliminar{
@@ -94,6 +100,23 @@ td{
 
 .btn-eliminar:hover{
     background-color: rgba(229, 35, 35, 0.785);
+    color: white;
+
+}
+
+.btn-factura{
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 7px;
+    font-size: 15px;
+    color: white;
+    background-color: rgba(158, 25, 191, 0.792);
+    transition: .2s linear;
+}
+
+.btn-factura:hover{
+    background-color: rgba(158, 25, 191, 0.661);
+    color: white;
 }
 
 
@@ -109,7 +132,7 @@ td{
 
 .formulario{
     max-width: 500px;
-    height: 100vh;
+    height: auto;
     margin: 30px auto;
     border-top: none;
     border-bottom: none;
@@ -257,11 +280,14 @@ form{
 }
 
 .alerta-warning{
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 5px;
     display: flex;
     justify-content: space-between;
-    background-color: rgba(251, 247, 168, 0.485);
+    background-color: rgba(235, 228, 99, 0.729);
     padding: 10px;
-    border: 1px solid rgba(222, 222, 86, 0.485);
+    border: 1px solid rgba(146, 146, 30, 0.485);
     color: rgba(46, 46, 46, 0.692);
 }
 
@@ -301,7 +327,8 @@ form{
 .contenedor-detalles{
     width: 50%;
     border-radius: 5px;
-    box-shadow: 0 0 20px 2px rgba(174, 172, 172, 0.5);    margin: 50px auto;
+    margin: 50px auto 0;
+    box-shadow: 0 0 20px 2px rgba(174, 172, 172, 0.5);
     height: 50vh;
     display: flex;
     justify-content: center;
@@ -326,6 +353,93 @@ form{
     border-bottom: 1px solid rgba(0, 0, 0, 0.282);
     margin-bottom: 10px;
     padding-left: 20px;
+}
+
+.lista-facturas{
+    width: 70%;
+    margin: 0 auto;
+}
+
+/* formulario de factura */
+
+.titulo-factura{
+    font-size: 35px;
+    color: blueviolet;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.formulario-factura{
+    max-width: 40%;
+    height: auto;
+    margin: 50px auto;
+    box-shadow: 0 0 20px 2px rgba(174, 172, 172, 0.5);
+    border-radius: 5px;
+    padding-top: 50px;
+    position: relative;
+}
+
+.formulario-factura form{
+    width: 100%;
+}
+
+
+.campos-factura{
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.campos-factura textarea{
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.29);
+}
+
+.campos-factura textarea:focus{
+    outline: none;
+}
+
+.campos-factura textarea:hover{
+    background-color: rgba(128, 128, 128, 0.056);
+}
+
+.campos-factura input{
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.29);
+}
+
+.campos-factura input:focus{
+    outline: none;
+}
+
+.campos-factura input:hover{
+    background-color: rgba(128, 128, 128, 0.056);
+}
+
+.btn-crear-factura{
+    width: 40%;
+    margin: 30px auto;
+    padding: 10px 0;
+    transition: border .3s linear;
+}
+
+.btn-crear-factura:hover{
+    border-color: blueviolet;
+}
+
+.btn-volver{
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.676);
+    position: absolute;
+    left: 15px;
+    top: 10px;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.btn-volver:hover{
+    background-color: rgba(0, 0, 0, 0.067);
 }
 
 

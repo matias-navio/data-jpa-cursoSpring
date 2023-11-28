@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
             var alerta1 = this.closest('.alerta-creado');
             var alerta2 = this.closest('.alerta-error');
             var alerta3 = this.closest('.alerta-foto');
+            var alerta4 = this.closest('.alerta-warning');
 
             if(alerta1){
                 alerta1.style.display = 'none';
@@ -15,6 +16,9 @@ document.addEventListener('DOMContentLoaded', function () {
             }
             if(alerta3){
                 alerta3.style.display = 'none';
+            }
+            if(alerta4){
+                alerta4.style.display = 'none';
             }
 
         });

@@ -11,7 +11,7 @@
     
     <section class="contenedor-detalles">
 
-<!-- verifica que el nombre de la foto es mayor a 0, entonce existe-->
+        <!-- verifica que el nombre de la foto es mayor a 0, entonce existe-->
         <img class="foto-cliente" th:if="${#strings.length(cliente.foto) > 0}" th:src="@{'/uploads/' + ${cliente.foto}}" th:alt="${cliente.foto}">
 
         <ul class="datos-cliente">
@@ -23,7 +23,35 @@
 
     </section>
 
-    
+
+
+    <div th:if="${#lists.isEmpty(cliente.facturas)}" class="alerta-warning"
+         th:text="'No hay facturas asignadas para el cliente ' + ${cliente.nombre} + ' ' + ${cliente.apellido}"></div>
+
+    <div class="lista-facturas">
+        <table th:if="${not #lists.isEmpty(cliente.facturas)}" class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th>Folio</th>
+                <th>Descripción</th>
+                <th>Fecha</th>
+                <th>Total</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="factura: ${cliente.facturas}">
+                <td th:text="${factura.id}"></td>
+                <td th:text="${factura.descripcion}"></td>
+                <td th:text="${factura.createAt}"></td>
+                <td th:text="${factura.total}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
 
     <footer th:replace="layout/layout :: footer"></footer>
 
