@@ -1,7 +1,6 @@
 package com.bolsadeideas.springboot.app.models.entity;
 
 import jakarta.persistence.*;
-
 import java.io.Serializable;
 
 @Entity
@@ -40,5 +39,5 @@ public class ItemFactura implements Serializable {
 
     public void setProducto(Producto producto) {this.producto = producto;}
 
-    private static final long serialVerdionUID = 1L;
+    private static final long serialVersionUID = 1L;
 }

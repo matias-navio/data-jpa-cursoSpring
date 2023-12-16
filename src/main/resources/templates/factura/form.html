@@ -24,22 +24,46 @@
 
             <div class="campos-factura">
 
-                <label class="con-color">Cliente</label>
+                <label class="con-color-factura">Cliente</label>
                 <input th:value="${factura.cliente.nombre} + ' ' + ${factura.cliente.apellido}" disabled="'disabled'">
 
-                <label class="con-color">Descripcion</label>
+                <label class="con-color-factura">Descripcion</label>
                 <input type="text" th:field="*{descripcion}">
+                <small class="alerta" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></small>
 
-                <label class="con-color">Observasion</label>
+
+                <label class="con-color-factura">Observasion</label>
                 <textarea th:field="*{observasion}"></textarea>
 
-                <label for="buscar_producto" class="con-color">Buscar producto: </label>
+                <label for="buscar_producto" class="con-color-factura">Buscar producto </label>
                 <input type="text" name="buscar_producto" id="buscar_producto">
 
                 <input type="submit" th:value="${boton}" class="btn-crear-factura">
+
             </div>
 
         </form>
+
+        <table th:replace="factura/plantilla-items :: itemsFactura"></table>
+
+        <div class="tabla-productos">
+            <table id="cargarItemProductos" class="table table-striped">
+
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+
+            </table>
+
+            <h5 class="gran-total"> Total factura: <span id="gran_total">0</span></h5>
+        </div>
 
     </div>
 

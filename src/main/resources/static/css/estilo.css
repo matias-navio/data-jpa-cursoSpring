@@ -92,14 +92,13 @@ td{
     text-decoration: none;
     border-radius: 5px;
     background-color: rgba(229, 35, 35, 0.993);
-    color: white;
-    padding: 7px;
+    padding: 7px 5px 9px;
     font-size: 15px;
     transition: .2s linear;
 }
 
 .btn-eliminar:hover{
-    background-color: rgba(229, 35, 35, 0.785);
+    background-color: rgba(229, 35, 35, 0.872);
     color: white;
 
 }
@@ -370,12 +369,13 @@ form{
 }
 
 .formulario-factura{
-    max-width: 40%;
+    max-width: 60%;
     height: auto;
     margin: 50px auto;
     box-shadow: 0 0 20px 2px rgba(174, 172, 172, 0.5);
     border-radius: 5px;
     padding-top: 50px;
+    padding-bottom: 30px;
     position: relative;
 }
 
@@ -418,7 +418,7 @@ form{
 }
 
 .btn-crear-factura{
-    width: 40%;
+    width: 30%;
     margin: 30px auto;
     padding: 10px 0;
     transition: border .3s linear;
@@ -440,6 +440,55 @@ form{
 
 .btn-volver:hover{
     background-color: rgba(0, 0, 0, 0.067);
+}
+
+#buscar_producto{
+    list-style: none;
+}
+
+
+/* estilos tabla de productos */
+
+.tabla-productos{
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.tabla-productos th{
+    color: rgba(30, 29, 30, 0.685);
+}
+
+.con-color-factura{
+    color: blueviolet;
+    font-weight: bold;
+    margin-top: 25px;
+    text-align: center;
+}
+
+.cantidad{
+    width: 50%;
+    text-align: center;
+}
+
+
+.btn-eliminarFactura{
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 7px 5px;
+
+}
+
+.btn-eliminarFactura:hover{
+    background-color: rgba(128, 128, 128, 0.286);
+}
+
+.gran-total{
+    color: rgba(33, 33, 33, 0.771);
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
 }
 
 

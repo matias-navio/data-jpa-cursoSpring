@@ -32,8 +32,8 @@ public class Factura implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     private Cliente cliente;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     // indica la llave foranea de la relacion (se hace asi porque la relacion es en un solo sentido)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "factura_id")
     private List<ItemFactura> items;
 
