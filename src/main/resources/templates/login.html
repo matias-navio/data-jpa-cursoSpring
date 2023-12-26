@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+    <header th:replace="layout/layout :: header"></header>
+
+
+    <div class="container-form">
+
+        <h2 th:text="${titulo}" class="titulo-inicio"></h2>
+
+        <form th:action="@{/login}" method="post" class="form-inicio">
+
+            <div class="form-campos">
+
+                <input type="text" placeholder="Nombre de usuario" name="username" id="username" autofocus required>
+
+                <input type="password" placeholder="Contraseña" name="password" id="password" required>
+
+                <div class="container-btn-inicio">
+                    <input type="submit" value="Iniciar Sesion" class="btn-inicio">
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <script th:src="@{/js/script.js}"></script>
+
+</body>
+</html>

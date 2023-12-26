@@ -33,8 +33,7 @@ public class FacturaController {
     public String ver(@PathVariable(value = "id") Long id,
                       Model model, RedirectAttributes flash){
 
-        Factura factura = clienteService.fetchFacturaByIdWithClienteWhithItemFacturaWithProducto(id);
-//      findFacturaById(id);
+        Factura factura = clienteService.findFacturaById(id);
 
         if(factura == null){
             flash.addFlashAttribute("error", "La factura no existe en la base de datos");
@@ -85,6 +84,7 @@ public class FacturaController {
                           @RequestParam(name = "item_id[]", required = false) Long[] itemId,
                           @RequestParam(name = "cantidad[]", required = false) Integer[] cantidad,
                           RedirectAttributes flash, SessionStatus sesion){
+
 
             if(result.hasErrors()){
                 model.addAttribute("error", "Crear factura");

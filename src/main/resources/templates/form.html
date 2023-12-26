@@ -16,8 +16,8 @@
             
             <div class="campos">
                 <label class="con-color">Nombre</label>
-            <!-- on field mapeamos a los atributos del objeto cliente-->
-
+            <!-- con field mapeamos a los atributos del objeto cliente-->
+                <input type="text" th:field="*{nombre}" th:errorclass="'form-control is-invalid'"/>
 
                 <small class="alerta" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
             

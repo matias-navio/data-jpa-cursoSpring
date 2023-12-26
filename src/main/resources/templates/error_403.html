@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymelef.org/extras/spring-security">
+
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+
+  <header th:replace="layout/layout :: header"></header>
+
+  <div class="cartel-denegado">
+    <p>Error: Acceso denegado!</p>
+    <div>
+      <h5>Lo siento <span sec:authentication="name"></span>, NO tienes permiso para este recurso</h5>
+      <a th:href="@{/listar}" role="button" class="btn-denegado">Ir al inicio</a>
+    </div>
+  </div>
+
+  <footer th:replace="layout/layout :: footer"></footer>
+
+</body>
+</html>

@@ -1,6 +1,7 @@
 package com.bolsadeideas.springboot.app.models.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ public class Factura implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty
     private String descripcion;
 
     private String observasion;
@@ -38,8 +40,7 @@ public class Factura implements Serializable {
     private List<ItemFactura> items;
 
     public Factura() {
-
-        this.items = new ArrayList<>();
+        this.items = new ArrayList<ItemFactura>();
     }
 
     public Long getId() {

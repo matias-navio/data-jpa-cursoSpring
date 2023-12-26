@@ -69,7 +69,7 @@ public class ClienteController {
     }
 
     // primero se especifica la ruta, y despues el motodo que por defecto es GET
-    @RequestMapping(value = "/listar", method = RequestMethod.GET)
+    @RequestMapping(value = {"/listar", "/"}, method = RequestMethod.GET)
     public String listar(@RequestParam(name = "page", defaultValue = "0") int page, Model model){
 
         Pageable pageRequest = PageRequest.of(page, 5);
@@ -149,7 +149,6 @@ public class ClienteController {
             String uniqueFileName = null;
 
             try{
-                //
                 uniqueFileName = uploadFileService.copy(foto);
             }catch (IOException e){
                 e.printStackTrace();

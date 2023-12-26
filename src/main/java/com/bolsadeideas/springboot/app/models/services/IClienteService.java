@@ -25,14 +25,13 @@ public interface IClienteService {
 
     public List<Producto> findByNombre(String term);
 
-    public void saveFactura(Factura factura);
-
     public Producto findProductoById(Long id);
+
+    public void saveFactura(Factura factura);
 
     public Factura findFacturaById(Long id);
 
     public void deleteFactura(Long id);
 
-    public Factura fetchFacturaByIdWithClienteWhithItemFacturaWithProducto(Long id);
 
 }
