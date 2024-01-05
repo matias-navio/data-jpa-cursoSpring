@@ -32,14 +32,14 @@ INSERT INTO productos (nombre, precio, create_at) VALUES ('Escritorio platinum',
 
 
 --ingresamos algunas facturas
-INSERT INTO facturas (descripcion, observasion, cliente_id, create_at) VALUES ('Factura de equipos de oficina', null, 1, NOW());
+INSERT INTO facturas (descripcion, observacion, cliente_id, create_at) VALUES ('Factura de equipos de oficina', null, 1, NOW());
 --items de la factura
 INSERT INTO facturas_items(cantidad, producto_id, factura_id) VALUES (1, 1, 1)
 INSERT INTO facturas_items(cantidad, producto_id, factura_id) VALUES (3, 7, 1)
 INSERT INTO facturas_items(cantidad, producto_id, factura_id) VALUES (3, 4, 1)
 INSERT INTO facturas_items(cantidad, producto_id, factura_id) VALUES (3, 7, 1)
 
-INSERT INTO facturas (descripcion, observasion, cliente_id, create_at) VALUES ('Factura de cámara', null, 5, NOW());
+INSERT INTO facturas (descripcion, observacion, cliente_id, create_at) VALUES ('Factura de cámara', null, 5, NOW());
 INSERT INTO facturas_items(cantidad, producto_id, factura_id) VALUES (1, 2, 2)
 
 

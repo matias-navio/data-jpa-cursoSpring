@@ -1,14 +1,76 @@
 <!DOCTYPE html >
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="layput/layout :: head"></head>
+<head th:replace="layout/layout :: head"></head>
 
   <body>
 
-    <header th:replace="layput/layout :: header"></header>
+    <header th:replace="layout/layout :: header"></header>
+
+    <div class="header-factura" th:text="${titulo}"></div>
+    <section class="contenedor-detalles-factura">
+
+      <p class="cabecera-datos-cliente" th:text="'Datos del cliente'"></p>
+      <div >
+        <ul class="datos-cliente-factura">
+          <li th:text="${factura.cliente.nombre}"></li>
+          <li th:text="${factura.cliente.email}"></li>
+        </ul>
+      </div>
+      
+
+      <p class="cabecera-datos-factura" th:text="'Datos de la factura'"></p>
+      <ul class="datos-factura">
+        <li th:text="'Folio: ' + ${factura.id}"></li>
+        <li th:text="'Descripcion: ' + ${factura.descripcion}"></li>
+        <li th:text="'Fecha: ' + ${factura.createAt}"></li>
+      </ul>
+
+      <div th:if="${#lists.isEmpty(factura.items)}"
+           th:text="'No haylineas para la factura ' + ${factura.descripcion}">
+      </div>
+
+      <div class="tabla-detalles-factura">
+        <table th:if="${not #lists.isEmpty(factura.items)}" class="table table-bordered">
+          <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Total</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="linea: ${factura.items}">
+            <td th:text="${linea.producto.nombre}"></td>
+            <td th:text="${linea.producto.precio}"></td>
+            <td th:text="${linea.cantidad}"></td>
+            <td th:text="${linea.calcularImporte()}"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="total-detalle-factura">
+        <h5 class="float-right"> Gran Total
+          <span th:text="${factura.total}" class="badge badge-secondary"></span>
+        </h5>
+      </div>
 
 
-    <footer th:replace="layput/layout :: footer"></footer>
+      <div class="header-observasiones" th:text="'Ovservasiones'"></div>
+      <article class="contenedor-ovservasiones">
+        <div>
+          <p th:text="${factura.observacion}"
+             th:if="${not #strings.isEmpty(factura.observacion)}"></p>
+          <h4 th:if="${#strings.isEmpty(factura.observacion)}"
+              th:text="'No tiene observaciones'"></h4>
+        </div>
+      </article>
+
+    </section>
+
+    <footer th:replace="layout/layout :: footer"></footer>
 
   </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymelef.org/extras/spring-security">
 
 <head th:replace="layout/layout :: head"></head>
 
@@ -23,8 +23,6 @@
 
     </section>
 
-
-
     <div th:if="${#lists.isEmpty(cliente.facturas)}" class="alerta-warning"
          th:text="'No hay facturas asignadas para el cliente ' + ${cliente.nombre} + ' ' + ${cliente.apellido}">
     </div>
@@ -37,8 +35,8 @@
                     <th>Descripción</th>
                     <th>Fecha</th>
                     <th>Total</th>
-                    <th></th>
-                    <th></th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
                 </tr>
             </thead>
             <tbody>
@@ -47,8 +45,8 @@
                     <td th:text="${factura.descripcion}"></td>
                     <td th:text="${factura.createAt}"></td>
                     <td th:text="${factura.total}"></td>
-                    <td><a th:href="@{'/factura/ver/'} + ${factura.id}" th:text="'detalle'"></a></td>
-                    <td><a class="btn-eliminar" th:href="@{'/factura/eliminar/'} + ${factura.id}"
+                    <td><a class="btn-detalle-factura" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{'/factura/ver/'} + ${factura.id}" th:text="'detalle'"></a></td>
+                    <td><a sec:authorize="hasRole('ROLE_ADMIN')" class="btn-eliminar" th:href="@{'/factura/eliminar/'} + ${factura.id}"
                            onclick="return confirm('¿Estas seguro que desea eliminar la factura?');">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash-x" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>

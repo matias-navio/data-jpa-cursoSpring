@@ -359,6 +359,19 @@ form{
     margin: 0 auto;
 }
 
+.btn-detalle-factura{
+    background-color: rgba(98, 195, 255, 0.623);
+    color: white;
+    padding: 7px 11px;
+    border-radius: 5px;
+}
+
+.btn-detalle-factura:hover{
+    background-color: rgba(98, 195, 255, 0.789);
+    color: white;
+    transition: .2s linear;
+}
+
 /* formulario de factura */
 
 .titulo-factura{
@@ -585,6 +598,114 @@ form{
 
 .btn-denegado:hover{
     color: white;
+}
+
+
+/* estilos de los detalle factura */
+
+.contenedor-detalles-factura{
+    max-width: 80vw;
+    border: 1px solid grey;
+    margin: 0 auto;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.header-factura{
+    max-width: 80vw;
+    margin: 50px auto 0;
+    border: 1px solid rgba(137, 43, 226, 0.542);
+    border-bottom: none;
+    padding: 10px 56px;
+    background-color: rgba(191, 185, 185, 0.413);
+    color: blueviolet;
+    font-weight: bold;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.datos-cliente-factura{
+    width: 90%;
+    list-style: none;
+    border: 1px solid grey;
+    border-top: none;
+    margin: 0px auto 50px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 10px 20px;
+}
+
+.datos-cliente-factura li{
+    padding-top: 10px;
+}
+
+
+.cabecera-datos-cliente{
+    width: 90%;
+    margin: 50px auto 0;
+    border: 1px solid #3f7ab97f;
+    padding: 10px 20px;
+    background-color: #b8daff;
+    color: rgba(0, 0, 255, 0.55);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.cabecera-datos-factura{
+    width: 90%;
+    margin: 0 auto;
+    border: 1px solid #3fb9537f;
+    padding: 10px 20px;
+    background-color: #bdffb8a6;
+    color: rgba(8, 90, 16, 0.55);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.datos-factura{
+    width: 90%;
+    list-style: none;
+    border: 1px solid grey;
+    border-top: none;
+    margin: 0px auto 40px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 10px 20px;
+}
+
+.datos-factura li{
+    padding-top: 10px;
+}
+
+.tabla-detalles-factura{
+    max-width: 72vw;
+    margin: 0 auto 50px;
+}
+
+.header-observasiones{
+    padding: 10px;
+    border: 1px solid rgba(41, 41, 200, 0.778);
+    width: 20vw;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    margin-left: 55px;
+}
+
+.contenedor-ovservasiones{
+    padding: 30px 10px;
+    border: 1px solid rgba(41, 41, 200, 0.778);
+    border-top: none;
+    width: 20vw;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-left: 55px;
+    margin-bottom: 50px;
+}
+
+.total-detalle-factura{
+    width: 100px;
+    float: right;
+    margin-right: 55px;
 }
 
 

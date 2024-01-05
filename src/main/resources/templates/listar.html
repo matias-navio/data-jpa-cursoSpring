@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymelef.org/extras/spring-security">
 
 <!--toma un fragmento del archivo layout con el nombre head, reutilización-->
 <head th:replace="layout/layout :: head"></head>
@@ -10,19 +10,19 @@
     <div class="contenido">
         <h3 class="titulo-listar" th:text="${titulo}"></h3>
 
-        <a  class="btn-crear" th:href="@{/form}"> Crear cliente</a>
+        <a  sec:authorize="hasRole('ROLE_ADMIN')" class="btn-crear" th:href="@{/form}"> Crear cliente</a>
 
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>Id</th>
+                    <th sec:authorize="hasRole('ROLE_USER')">Id</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Email</th>
                     <th>Fecha</th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')"></th>
                 </tr>
             </thead>
 
@@ -33,10 +33,10 @@
                     <td th:text="${cliente.apellido}"></td>
                     <td th:text="${cliente.email}"></td>
                     <td th:text="${cliente.createAt}"></td>
-                    <td> <a class="btn-factura" th:href="@{/factura/form/} + ${cliente.id}">crear factura</a> </td>
-                    <td> <a class="btn-editar" th:href="@{/form/} + ${cliente.id}">editar</a></td>
+                    <td> <a sec:authorize="hasRole('ROLE_ADMIN')" class="btn-factura" th:href="@{/factura/form/} + ${cliente.id}">crear factura</a> </td>
+                    <td> <a sec:authorize="hasRole('ROLE_ADMIN')" class="btn-editar" th:href="@{/form/} + ${cliente.id}">editar</a></td>
                     <td>
-                        <a class="btn-eliminar" th:href="@{/eliminar/} + ${cliente.id}" onclick="return confirm('Estas seguro que queres eliminar?');">
+                        <a sec:authorize="hasRole('ROLE_ADMIN')" class="btn-eliminar" th:href="@{/eliminar/} + ${cliente.id}" onclick="return confirm('Estas seguro que queres eliminar?');">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash-x" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                                 <path d="M4 7h16" />
