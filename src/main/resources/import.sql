@@ -42,5 +42,12 @@ INSERT INTO facturas_items(cantidad, producto_id, factura_id) VALUES (3, 7, 1)
 INSERT INTO facturas (descripcion, observacion, cliente_id, create_at) VALUES ('Factura de cámara', null, 5, NOW());
 INSERT INTO facturas_items(cantidad, producto_id, factura_id) VALUES (1, 2, 2)
 
+INSERT INTO users (username, password, enable) VALUES ('matias', '$2a$10$dZiRrnWtPGnC2K3q/ofBL.9HtaqICNKOdlI7qekt0FejHYc4yUKtO', 1);
+INSERT INTO users (username, password, enable) VALUES ('admin', '$2a$10$L2Ps7XruQT.BC4.0Y4jYn.My5QtG2AoomghSxDBxzSlyGW82yZcYC', 1);
+
+INSERT INTO authorities (user_id, authority) VALUES (1, 'ROLE_USER');
+INSERT INTO authorities (user_id, authority) VALUES (2, 'ROLE_USER');
+INSERT INTO authorities (user_id, authority) VALUES (2, 'ROLE_ADMIN');
+
 
 

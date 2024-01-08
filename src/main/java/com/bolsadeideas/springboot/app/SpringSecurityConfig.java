@@ -1,16 +1,14 @@
 package com.bolsadeideas.springboot.app;
 
 import com.bolsadeideas.springboot.app.auth.handler.LoginSuccessHandler;
+import com.bolsadeideas.springboot.app.models.services.JpaUserDatailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -26,7 +24,7 @@ public class SpringSecurityConfig {
      private BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    private DataSource dataSource;
+    private JpaUserDatailService userDatailService;
 
     // este metodo gestiona los detalles del usuario
     /*@Bean
@@ -54,11 +52,9 @@ public class SpringSecurityConfig {
     public void configurerGlobal(AuthenticationManagerBuilder build) throws Exception {
 
         // indica que se utiliza autenticacion manejada con JDBC
-        build.jdbcAuthentication()
-                .dataSource(dataSource) // este objeto se conecta con la base de datos y realiza las operaciones
-                .passwordEncoder(passwordEncoder) // codificador de contraseñas, verifica las contraseñas de la base de datos
-                .usersByUsernameQuery("select username, password, enable from users where username=?")
-                .authoritiesByUsernameQuery("select u.username, a.authority from authorities a inner join users u on (a.user_id=u.id) where u.username=?");
+        build.userDetailsService(userDatailService)
+                .passwordEncoder(passwordEncoder); // codificador de contraseñas, verifica las contraseñas de la base de datos
+
     }
 
     // este método define los filtros de seguridad de la aplicacion
