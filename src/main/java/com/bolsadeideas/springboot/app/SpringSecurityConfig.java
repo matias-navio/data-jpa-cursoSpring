@@ -68,7 +68,8 @@ public class SpringSecurityConfig {
                         new AntPathRequestMatcher("/js/**"),
                         new AntPathRequestMatcher("/css/**"),
                         new AntPathRequestMatcher("/images/**"),
-                        new AntPathRequestMatcher("/listar"))
+                        new AntPathRequestMatcher("/listar"),
+                        new AntPathRequestMatcher("/locale"))
                         .permitAll()
                 .requestMatchers(
                         new AntPathRequestMatcher("/ver/**"),

@@ -15,31 +15,31 @@
         <form th:action="@{/form}" th:object="${cliente}" method="post" enctype="multipart/form-data">
             
             <div class="campos">
-                <label class="con-color">Nombre</label>
+                <label class="con-color" th:text="#{text.cliente.nombre}">Nombre</label>
             <!-- con field mapeamos a los atributos del objeto cliente-->
                 <input type="text" th:field="*{nombre}" th:errorclass="'form-control is-invalid'"/>
 
                 <small class="alerta" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
             
-                <label class="con-color">Apellido</label>
+                <label class="con-color" th:text="#{text.cliente.apellido}">Apellido</label>
                 <input type="text" th:field="*{apellido}" th:errorclass="'form-control is-invalid'"/>
 
                 <small class="alerta" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></small>
             
-                <label class="con-color">Email</label>
+                <label class="con-color" th:text="#{text.cliente.email}">Email</label>
                 <input type="email" th:field="*{email}" th:errorclass="'form-control is-invalid'" />
 
                 <small class="alerta" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
 
-                <label class="con-color">Fecha</label>
+                <label class="con-color" th:text="#{text.cliente.createAt}">Fecha</label>
                 <input type="text" th:field="*{createAt}" th:errorclass="'form-control is-invalid'" />
 
                 <small class="alerta" th:if="${#fields.hasErrors('createAt')}" th:errors="*{createAt}"></small>
 
-                <label class="con-color">Foto</label>
+                <label class="con-color" th:text="#{text.cliente.form.foto}">Foto</label>
                 <input type="file" name="file">
 
-                <input type="submit" value="Crear cliente" class="boton" />
+                <input type="submit" th:value="#{text.btn.crearCliente}" class="boton" />
             </div>
             
 <!--            <input type="hidden" th:field="*{id}">-->

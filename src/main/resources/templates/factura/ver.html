@@ -10,7 +10,7 @@
     <div class="header-factura" th:text="${titulo}"></div>
     <section class="contenedor-detalles-factura">
 
-      <p class="cabecera-datos-cliente" th:text="'Datos del cliente'"></p>
+      <p class="cabecera-datos-cliente" th:text="#{text.factura.ver.datosCliente}"></p>
       <div >
         <ul class="datos-cliente-factura">
           <li th:text="${factura.cliente.nombre}"></li>
@@ -19,11 +19,11 @@
       </div>
       
 
-      <p class="cabecera-datos-factura" th:text="'Datos de la factura'"></p>
+      <p class="cabecera-datos-factura" th:text="#{text.factura.ver.datosFactura}"></p>
       <ul class="datos-factura">
-        <li th:text="'Folio: ' + ${factura.id}"></li>
-        <li th:text="'Descripcion: ' + ${factura.descripcion}"></li>
-        <li th:text="'Fecha: ' + ${factura.createAt}"></li>
+        <li th:text="#{text.factura.ver.folio} + ${': '} + ${factura.id}"></li>
+        <li th:text="#{text.factura.descripcion} + ${': '} + ${factura.descripcion}"></li>
+        <li th:text="#{text.factura.fecha} + ${': '} + ${factura.createAt}"></li>
       </ul>
 
       <div th:if="${#lists.isEmpty(factura.items)}"
@@ -34,10 +34,10 @@
         <table th:if="${not #lists.isEmpty(factura.items)}" class="table table-bordered">
           <thead>
           <tr>
-            <th>Producto</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
-            <th>Total</th>
+            <th th:text="#{text.factura.nombreProducto}">Producto</th>
+            <th th:text="#{text.factura.precio}">Precio</th>
+            <th th:text="#{text.factura.cantidad}">Cantidad</th>
+            <th th:text="#{text.factura.total}">Total</th>
           </tr>
           </thead>
           <tbody>
@@ -52,19 +52,19 @@
       </div>
 
       <div class="total-detalle-factura">
-        <h5 class="float-right"> Gran Total
+        <h5 class="float-right" th:text="#{text.factura.ver.granTotal}"> Gran Total
           <span th:text="${factura.total}" class="badge badge-secondary"></span>
         </h5>
       </div>
 
 
-      <div class="header-observasiones" th:text="'Ovservasiones'"></div>
+      <div class="header-observasiones" th:text="#{text.factura.ver.tituloObservaciones}"></div>
       <article class="contenedor-ovservasiones">
         <div>
           <p th:text="${factura.observacion}"
              th:if="${not #strings.isEmpty(factura.observacion)}"></p>
           <h4 th:if="${#strings.isEmpty(factura.observacion)}"
-              th:text="'No tiene observaciones'"></h4>
+              th:text="#{text.factura.ver.textoObservasiones}"></h4>
         </div>
       </article>
 

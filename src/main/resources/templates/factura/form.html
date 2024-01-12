@@ -16,7 +16,7 @@
 
     <div class="formulario-factura">
 
-        <a th:href="@{../../listar}" class="btn-volver" th:text="${'&laquo; volver'}"></a>
+        <a th:href="@{../../listar}" class="btn-volver" th:text="#{text.volver}"></a>
 
         <h1 th:text="${titulo}" class="titulo-factura"></h1>
 
@@ -24,18 +24,18 @@
 
             <div class="campos-factura">
 
-                <label class="con-color-factura">Cliente</label>
+                <label class="con-color-factura" th:text="#{text.factura.crear.cliente}">Cliente</label>
                 <input th:value="${factura.cliente.nombre} + ' ' + ${factura.cliente.apellido}" disabled="'disabled'">
 
-                <label class="con-color-factura">Descripcion</label>
+                <label class="con-color-factura" th:text="#{text.factura.descripcion}">Descripcion</label>
                 <input type="text" th:field="*{descripcion}">
                 <small class="alerta" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></small>
 
 
-                <label class="con-color-factura">Observacion</label>
+                <label class="con-color-factura" th:text="#{text.factura.crear.observasion}">Observacion</label>
                 <textarea th:field="*{observacion}"></textarea>
 
-                <label for="buscar_producto" class="con-color-factura">Buscar producto </label>
+                <label for="buscar_producto" class="con-color-factura" th:text="#{text.factura.crear.producto}">Buscar producto </label>
                 <input type="text" name="buscar_producto" id="buscar_producto">
 
                 <input type="submit" th:value="${boton}" class="btn-crear-factura">
@@ -51,10 +51,10 @@
 
                 <thead>
                     <tr>
-                        <th>Nombre</th>
-                        <th>Precio</th>
-                        <th>Cantidad</th>
-                        <th>Total</th>
+                        <th th:text="#{text.factura.nombreProducto}">Nombre</th>
+                        <th th:text="#{text.factura.precio}">Precio</th>
+                        <th th:text="#{text.factura.cantidad}">Cantidad</th>
+                        <th th:text="#{text.factura.total}">Total</th>
                         <th></th>
                     </tr>
                 </thead>

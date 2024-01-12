@@ -21,21 +21,21 @@
            <div class="collapse navbar-collapse" id="navbarScroll">
                <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
                    <li class="nav-item active">
-                       <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                       <a class="nav-link" href="#" th:text="#{text.header.home}">Home <span class="sr-only">(current)</span></a>
                    </li>
 
                    <li class="nav-item">
-                       <a class="nav-link" th:href="@{/listar}">Clientes</a>
+                       <a class="nav-link" th:href="@{/listar}" th:text="#{text.header.cliente}">Clientes</a>
                    </li>
                </ul>
 
-               <ul class="nav-item dropdown navbar-right">
+               <ul class="navbar-nav navbar-right">
                    <li sec:authorize="!isAuthenticated()" >
                        <a class="btn btn-outline-primary" th:href="@{/login}">Sing In</a>
                    </li>
                    <li sec:authorize="isAuthenticated()" class="dropdown show">
                        <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button"
-                          data-toggle="dropdown" aria-expanded="false">
+                          id="dropdownMenuLink" data-toggle="dropdown" aria-expanded="false">
                            <span sec:authentication="name"></span>
                        </a>
 
@@ -49,6 +49,31 @@
                        </div>
                    </li>
                </ul>
+
+               <ul class="navbar-nav navbar-right mx-4">
+<!--                   <li class="nav-item mx-1">-->
+<!--                       <a class=" btn btn-outline-success" th:href="@{/locale(lang=es_ES)}">ES</a>-->
+<!--                   </li>-->
+<!--                   <li class="nav-item mx-1">-->
+<!--                       <a class=" btn btn-outline-success" th:href="@{/locale(lang=en_US)}">EN</a>-->
+<!--                   </li>-->
+<!--                   <li class="nav-item mx-1">-->
+<!--                       <a class="btn btn-outline-success" th:href="@{/locale(lang=de_DE)}">DE</a>-->
+<!--                   </li>-->
+
+                   <li class="nav-item dropdown show">
+                       <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button"
+                          id="dropdownLenguaje" data-toggle="dropdown" aria-expanded="false">
+                           <span th:text="#{text.locale.language}"></span></a>
+
+                           <div class="dropdown-menu" aria-labelledby="dropdownLenguage">
+                               <a class="dropdown-item" th:href="@{/locale(lang=es_ES)}" th:text="#{text.locale.es}"></a>
+                               <a class="dropdown-item" th:href="@{/locale(lang=en_US)}" th:text="#{text.locale.en}"></a>
+                               <a class="dropdown-item" th:href="@{/locale(lang=de_DE)}" th:text="#{text.locale.de}"></a>
+                           </div>
+                   </li>
+               </ul>
+
            </div>
        </nav>
 
@@ -72,7 +97,6 @@
 
    <footer th:fragment="footer" class="footer">
 
-
        <img class="logo-footer" th:src="@{/images/img.png}" alt="Spring Logo">
 
        <section class="texto-footer">
@@ -83,11 +107,7 @@
                Roles: <span sec:authentication="principal.authorities"></span>
            </p>
 
-           <p>
-               Este proyecto fue desarrollado en IDE IntelliJ IDEA por Matías Navío
-               con Spring Boot, Thymeleaf, JPA, Hibernate, MySQL. Curso de Spring Boot Udemy
-               con el profesor Andrés Guzmán.
-           </p>
+           <p th:text="#{text.footer}"></p>
            <p>
                Powered by <a href="https://start.spring.io/">Spring Boot</a>
                y <a href="http://www.thymeleaf.org">Thymeleaf</a>.

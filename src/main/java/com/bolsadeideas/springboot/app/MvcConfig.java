@@ -6,11 +6,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import java.nio.file.Paths;
+import java.util.Locale;
 
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
@@ -39,5 +44,31 @@ public class MvcConfig implements WebMvcConfigurer {
     @Bean
     public static BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    // este componente sirve para que tu app establesca un idioma dependiendo del locale,
+    // y si no, se establece uno predeterminado
+    @Bean
+    public LocaleResolver localeResolver(){
+
+        SessionLocaleResolver localeResolver = new SessionLocaleResolver();
+        localeResolver.setDefaultLocale(new Locale("es"));
+        return localeResolver;
+    }
+
+    // este componente cambiara el idioma locale dependiendo de una parametro de  una solicitud URL
+    // "?lang=es" o "?lang=en"
+    @Bean
+    public LocaleChangeInterceptor localeChangeInterceptor(){
+        LocaleChangeInterceptor localeInterceptor = new LocaleChangeInterceptor();
+        localeInterceptor.setParamName("lang");
+        return localeInterceptor;
+    }
+
+    // agrega el interceptor localChance
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+
+        registry.addInterceptor(localeChangeInterceptor());
     }
 }
