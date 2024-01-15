@@ -7,13 +7,13 @@
 
     <header th:replace="layout/layout :: header"></header>
 
-    <div class="header-factura" th:text="${titulo}"></div>
+    <div class="header-factura" th:text="#{text.factura.ver.titulo} + #{text.factura.ver.titulo2}"></div>
     <section class="contenedor-detalles-factura">
 
       <p class="cabecera-datos-cliente" th:text="#{text.factura.ver.datosCliente}"></p>
       <div >
         <ul class="datos-cliente-factura">
-          <li th:text="${factura.cliente.nombre}"></li>
+          <li th:text="${factura.cliente.nombre} + ${' '} + ${factura.cliente.apellido}"></li>
           <li th:text="${factura.cliente.email}"></li>
         </ul>
       </div>
@@ -52,9 +52,9 @@
       </div>
 
       <div class="total-detalle-factura">
-        <h5 class="float-right" th:text="#{text.factura.ver.granTotal}"> Gran Total
-          <span th:text="${factura.total}" class="badge badge-secondary"></span>
-        </h5>
+        <h5 class="float-right" th:text="#{text.factura.ver.granTotal}"></h5>
+        <span th:text="${factura.total}" class="badge badge-secondary"></span>
+        <a class="btn-pdf" th:href="@{'/factura/ver/' + ${factura.id}(format=pdf)}">PDF</a>
       </div>
 
 

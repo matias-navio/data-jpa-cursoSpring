@@ -22,7 +22,8 @@ public class LoginController {
                         @RequestParam(value = "logout", required = false) String logout,
                         Model model, Principal principal, RedirectAttributes flash, Locale locale){
 
-        model.addAttribute("titulo", messageSource.getMessage("text.login.titulo", null, locale));
+//        model.addAttribute("titulo", messageSource.getMessage("text.login.titulo", null, locale));
+        model.addAttribute("titulo", "Iniciar Sesion");
 
         // si es true, es porque ya habia iniciado sesion antes
         if(principal != null){

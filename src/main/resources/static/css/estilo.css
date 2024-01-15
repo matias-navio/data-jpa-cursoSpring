@@ -703,9 +703,26 @@ form{
 }
 
 .total-detalle-factura{
-    width: 100px;
+    width: 7rem;
     float: right;
     margin-right: 55px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.btn-pdf{
+    background-color: rgba(255, 0, 0, 0.854);
+    color: white;
+    border-radius: 5px;
+    margin-top: 70px
+}
+
+.btn-pdf:hover{
+    background-color: rgba(255, 0, 0, 0.775);
+    color: white;
+    transition: .2s linear;
+    order: 1;
 }
 
 
