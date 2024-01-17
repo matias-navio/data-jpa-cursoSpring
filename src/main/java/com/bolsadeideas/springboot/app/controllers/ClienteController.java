@@ -25,11 +25,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Collection;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -83,6 +85,17 @@ public class ClienteController {
         model.put("titulo", messageSource.getMessage("text.cliente.ver.titulo" ,null, locale) + cliente.getNombre() + " " + cliente.getApellido());
 
         return "ver";
+    }
+
+    // @ResponseBody lo que hace es indicar que este metodo devuelde un formato REST (json, xml) y no una vista
+    /* Tambien podemos indicara rriab del controlador @RestController
+    *  que seria como combinar @Controller con @ResponseBody
+    *  y todos sus metodos van a devolver foramto REST*/
+    @GetMapping("/listar-rest")
+    @ResponseBody
+    public List<Cliente> listarRest(){
+
+        return clienteService.findAll();
     }
 
     // primero se especifica la ruta, y despues el motodo que por defecto es GET

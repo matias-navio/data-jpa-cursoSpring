@@ -78,7 +78,8 @@ public class SpringSecurityConfig {
                 .requestMatchers(
                         new AntPathRequestMatcher("/form/**"),
                         new AntPathRequestMatcher("/eliminar/**"),
-                        new AntPathRequestMatcher("/factura/**")
+                        new AntPathRequestMatcher("/factura/**"),
+                        new AntPathRequestMatcher("/listar**")
                 ).hasRole("ADMIN")
                 .anyRequest().authenticated())
                 .formLogin(formLogin -> formLogin

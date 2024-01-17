@@ -52,9 +52,13 @@
       </div>
 
       <div class="total-detalle-factura">
-        <h5 class="float-right" th:text="#{text.factura.ver.granTotal}"> Gran Total
-          <span th:text="${factura.total}" class="badge badge-secondary"></span>
-        </h5>
+        <h5 class="float-right" th:text="#{text.factura.ver.granTotal}"> Gran Total</h5>
+        <span th:text="${factura.total}" class="badge badge-secondary"></span>
+        <div class="btns-exportar">
+          <a class="btn-pdf" th:href="@{'/factura/ver/' + ${factura.id}(format=pdf)}">PDF</a>
+          <a class="btn-excel" th:href="@{'/factura/ver/' + ${factura.id}(format=xlsx)}">XLSX</a>
+          <a class="btn-json" th:href="@{'/listar-rest'(format=json)}">JSON</a>
+        </div>
       </div>
 
 

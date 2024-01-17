@@ -1,5 +1,7 @@
 package com.bolsadeideas.springboot.app.models.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 
@@ -23,6 +25,7 @@ public class Factura implements Serializable {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "create_at")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date createAt;
 
     @PrePersist
@@ -32,6 +35,7 @@ public class Factura implements Serializable {
 
     // relacion entre la factura y los clientes, en donde Many hace referencia a las facturas (muchas facturas)
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonBackReference // parte tracera de la relacion que no quermos mostrar
     private Cliente cliente;
 
     // indica la llave foranea de la relacion (se hace asi porque la relacion es en un solo sentido)

@@ -1,5 +1,7 @@
 package com.bolsadeideas.springboot.app.models.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -37,10 +39,12 @@ public class Cliente implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @NotNull
     @Past
+    @JsonFormat(pattern = "yyyy-MM-dd") // para que lo muestre de esa manera en el json
     private Date createAt;
 
     // relacion del cliente con las facturas, One hace referencia al cliente (un cliente, muchas facturas)
     @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference // parte delantera de la relacion que si queremos mostrar
     private List<Factura> facturas;
 
     public Cliente() {

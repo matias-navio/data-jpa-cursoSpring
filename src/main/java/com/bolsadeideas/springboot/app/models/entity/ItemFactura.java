@@ -1,5 +1,6 @@
 package com.bolsadeideas.springboot.app.models.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.io.Serializable;
 
@@ -15,6 +16,8 @@ public class ItemFactura implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "producto_id")
+    // esto sirve para ignorar ciertos atributos del objeto
+    @JsonIgnoreProperties({"hibernateLazyInitializer" , "handler"}) // son atributos que se crean por la serializacion
     private Producto producto;
 
     public Long getId() {

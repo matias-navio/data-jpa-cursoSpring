@@ -21,6 +21,7 @@ import java.util.Locale;
 public class MvcConfig implements WebMvcConfigurer {
 
     private Logger log = LoggerFactory.getLogger(getClass());
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         WebMvcConfigurer.super.addResourceHandlers(registry);
@@ -71,4 +72,5 @@ public class MvcConfig implements WebMvcConfigurer {
 
         registry.addInterceptor(localeChangeInterceptor());
     }
+
 }

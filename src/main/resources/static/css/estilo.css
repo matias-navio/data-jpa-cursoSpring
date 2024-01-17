@@ -703,9 +703,62 @@ form{
 }
 
 .total-detalle-factura{
-    width: 100px;
+    display: flex;
+    flex-direction: column;
+    width: 10rem;
     float: right;
     margin-right: 55px;
+    height: 9rem;
+    align-items: center;
+}
+
+.btns-exportar{
+    display: flex;
+    margin-top: 5rem;
+    gap: 10px;
+}
+
+.btn-pdf{
+    background-color: rgba(255, 0, 0, 0.883);
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    width: 60px;
+}
+
+.btn-pdf:hover{
+    background-color: rgba(255, 0, 0, 0.764);
+    color: white;
+}
+
+h5{
+    margin: 0;
+}
+
+.btn-excel{
+    background-color: rgba(30, 160, 35, 0.883);
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    width: 60px;
+}
+
+.btn-excel:hover{
+    background-color: rgba(30, 160, 34, 0.761);
+    color: white;
+}
+
+.btn-json{
+    background-color: #3EB397 ;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+    width: 60px;
+}
+
+.btn-json:hover{
+    background-color: #58C3A9 ;
+    color: white;
 }
 
 
