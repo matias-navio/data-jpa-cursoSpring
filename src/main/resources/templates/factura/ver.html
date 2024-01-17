@@ -7,13 +7,13 @@
 
     <header th:replace="layout/layout :: header"></header>
 
-    <div class="header-factura" th:text="${titulo}"></div>
+    <div class="header-factura" th:text="#{text.factura.ver.titulo} + #{text.factura.ver.titulo2}"></div>
     <section class="contenedor-detalles-factura">
 
       <p class="cabecera-datos-cliente" th:text="#{text.factura.ver.datosCliente}"></p>
       <div >
         <ul class="datos-cliente-factura">
-          <li th:text="${factura.cliente.nombre}"></li>
+          <li th:text="${factura.cliente.nombre} + ${' '} + ${factura.cliente.apellido}"></li>
           <li th:text="${factura.cliente.email}"></li>
         </ul>
       </div>
@@ -60,7 +60,6 @@
           <a class="btn-json" th:href="@{'/listar-rest'(format=json)}">JSON</a>
         </div>
       </div>
-
 
       <div class="header-observasiones" th:text="#{text.factura.ver.tituloObservaciones}"></div>
       <article class="contenedor-ovservasiones">

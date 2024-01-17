@@ -22,15 +22,16 @@ import java.awt.*;
 import java.util.Locale;
 import java.util.Map;
 
-// este componente se anota igual a lo que devuelve el motodo ver handler del controlador
+
+//es la misma ruta que devuelve le metodo handler ver de FacturaController
 @Component("factura/ver")
 public class FacturaPdfView extends AbstractPdfView {
 
-    @Autowired
-    private MessageSource messageSource;
+        @Autowired
+        private MessageSource messageSource;
 
-    @Autowired
-    private LocaleResolver localeResolver;
+        @Autowired
+        private LocaleResolver localeResolver;
 
 
     @Override
@@ -97,5 +98,6 @@ public class FacturaPdfView extends AbstractPdfView {
         tabla3.addCell(factura.getTotal().toString());
 
         document.add(tabla3);
+
     }
 }
